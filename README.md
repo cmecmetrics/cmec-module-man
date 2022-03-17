@@ -14,7 +14,7 @@ Environment
 -----------
 Requires cmec_driver and python>=3.5. Conda is recommended as many modules use conda environments to manage python dependencies.
 
-Here is are example commands to create and activate a new conda environment called "cmec" for running the module manager:  
+Here are example commands to create and activate a new conda environment called "cmec" for running the module manager:  
 ```
 conda create -n cmec -c conda-forge cmec_driver python=3.9
 conda activate cmec
