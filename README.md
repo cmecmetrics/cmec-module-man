@@ -111,4 +111,8 @@ Issues
 While these recipes have been tested on Mac and Unix systems, results may be different on your system.
 
 If you encounter any problems, please open an Issue on Github. Describe the operating system you are working on and provide the steps to reproduce your problem. 
+License
+-------
+The CMEC module manager is distributed under the terms of the BSD 3-Clause License.
 
+LLNL-CODE-832592
