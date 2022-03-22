@@ -1,3 +1,4 @@
 .module_manager_user_settings
+.DS_Store
 modules/
 tmp_dir/
