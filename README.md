@@ -38,7 +38,7 @@ Create a new file called .module_manager_user_settings in the cmec-module-man co
 ### Settings file keys
 
 **git_clone_https**  
-Boolean true (defualt) or false. Set true to use https for cloning, or false to use ssh for cloning. Do not capitalize or quote this value.
+Boolean true (default) or false. Set true to use https for cloning, or false to use ssh for cloning. Do not capitalize or quote this value.
 
 **conda_env_dir**  
 String. In the quotes, enter the path to the directory used for storing your conda environments. For example, in miniconda 3 this might be: ~/miniconda3/envs. Your system might have a different environment location, so please consult any documentation about using conda on your platform. The setup script can expand the tilde in the path.
