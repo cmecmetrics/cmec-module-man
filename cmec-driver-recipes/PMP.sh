@@ -34,10 +34,3 @@ create_command="conda create  -p $CONDA_ENV_DIR/_CMEC_pcmdi_metrics -c conda-for
 
 conda_env_from_command_line "$package_name" $conda_env_name "$create_command"
 
-# Install ENSO metrics repository. Need to enter the modules directory for this
-cd $CMEC_MODULES_HOME
-repo_name="CLIVAR-PRP/ENSO_metrics"
-git_clone "github.com" $repo_name "ENSO_metrics"
-
-cd $CMEC_MODULES_HOME/"ENSO_metrics"
-conda_setup_py_install "ENSO_metrics" $conda_env_name
