@@ -16,6 +16,7 @@ Arguments:
 import argparse
 import json
 import os
+import shutil
 import sys
 import subprocess
 
@@ -164,14 +165,8 @@ if __name__ == "__main__":
                 "Overwrite directory {0}?".format(module_dir))
         
         if overwrite:
-            try:
-                subprocess.run(["rm","-rf",module_dir],
-                               shell=False,
-                               check=True)
-            except subprocess.CalledProcessError:
-                print("Could not overwrite module directory.")
-                print("Exiting.")
-                sys.exit()
+            if os.path.exists(module_dir):
+                shutil.rmtree(module_dir)
         else:
             print("Skip overwrite. This could result in "+
                   "unexpected behavior.\n")
@@ -238,12 +233,8 @@ if __name__ == "__main__":
                   "    cmec-driver register " + module_dir)
 
         # Remove temporary directory
-        try:
-            subprocess.run(["rm","-rf",tmp_dir],
-                            shell=False,
-                            check=True)
-        except subprocess.CalledProcessError:
-            print("\nCould not remove directory "+ tmp_dir)
+        if os.path.exists(tmp_dir):
+            shutil.rmtree(tmp_dir)
     else:
         print("\nSkipping run recipe for module",module)
         print("Exiting")
