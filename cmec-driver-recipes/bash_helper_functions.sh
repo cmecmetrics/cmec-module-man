@@ -50,19 +50,6 @@ git_clone () {
         git clone -q git@$1:$2.git $3
         ret=$?
     fi
-    #while true; do
-	#    read -p "Use (a) HTTPS or (b) SSH?  [A/b] " AB
-	#    case $AB in
-	#	    [Bb]* ) echo "Cloning git repository"
-    #                git clone -q git@github.com:$1.git $2
-    #                ret=$?
-    #                break;;
-	#	    * ) echo "Cloning git repository"
-    #            git clone -q https://github.com/$1.git $2
-    #            ret=$?
-    #            break;;
-	#    esac
-    #done
 
     # Git clone will fail if we didn't overwrite the module directory
     # before running the recipe. So check for this error and update repo if needed.
@@ -252,8 +239,12 @@ module_download () {
         exit
     fi
     tmp_archive_name=$(echo $2 | cut -d '/' -f 9)
+    rm -rf $CMEC_MODULE_DIR
 	tar -xf $CMEC_MODULES_HOME/$tmp_archive_name -C $CMEC_MODULES_HOME
-    mv $3 
+    # If extracted archive name is not the same as the module name:
+    if [ ! -d $CMEC_MODULE_DIR ]; then
+        mv $CMEC_MODULES_HOME/$3 $CMEC_MODULE_DIR
+    fi
     rm $CMEC_MODULES_HOME/$tmp_archive_name
 
 }

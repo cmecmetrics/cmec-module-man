@@ -16,7 +16,7 @@ module_download "${user_prompt}" "${wget_path}"  ${archive_name}
 # Write contents.json
 echo
 echo "Creating contents.json"
-python generate_contents.py modules/MDTF_Diagnostics modules/MDTF_Diagnostics/diagnostics MDTF_Diagnostics "MDTF Diagnostics package version "${mdtf_version}
+python generate_contents.py $CMEC_MODULE_DIR $CMEC_MODULE_DIR/diagnostics MDTF_Diagnostics "MDTF Diagnostics package version "${mdtf_version}
 
 CONDA_ROOT=$(conda info --base)
 
@@ -36,15 +36,17 @@ echo "https://github.com/NOAA-GFDL/MDTF-diagnostics"
 echo "***********************END INFO***************************"
 echo
 sleep .5
-while true; do
-	read -p "Install MDTF conda environments (see INFO above)? [y/n] " yn
-	case $yn in
-		[Yy]* ) break;; #continue to next section for install
-		[Nn]* ) echo "Skipping conda environments for MDTF Diagnostics.";
-				exit;;
-		* ) echo "Please answer yes (y) or no (n).";;
-	esac
-done
+if [ $USE_PROMPTS == "1" ]; then
+	while true; do
+		read -p "Install MDTF conda environments (see INFO above)? [y/n] " yn
+		case $yn in
+			[Yy]* ) break;; #continue to next section for install
+			[Nn]* ) echo "Skipping conda environments for MDTF Diagnostics.";
+					exit;;
+			* ) echo "Please answer yes (y) or no (n).";;
+		esac
+	done
+fi
 
 # Call the MDTF script for conda environment install
 cd $CMEC_MODULE_DIR
