@@ -72,7 +72,7 @@ Run complete (default) installation without prompts
 | CMECTEST | Example CMEC module | https://github.com/cmecmetrics/example_cmec_module |
 | Drought_Metrics | Drought Metrics | https://github.com/cmecmetrics/Drought_Metrics |
 | ILAMB | International Land Model Benchmarking | https://github.com/rubisco-sfa/ILAMB |
-| MDTF_Diagnostics | Model Diagnostics Task Force | https://github.com/NOAA-GFDL/MDTF-diagnostics |
+| MDTF_Diagnostics (see issue #4) | Model Diagnostics Task Force | https://github.com/NOAA-GFDL/MDTF-diagnostics |
 | PMP | PCMDI Metrics Package |  https://github.com/PCMDI/pcmdi_metrics |
 
 
