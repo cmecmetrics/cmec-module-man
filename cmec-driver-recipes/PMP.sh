@@ -34,3 +34,27 @@ create_command="conda create  -p $CONDA_ENV_DIR/_CMEC_pcmdi_metrics -c conda-for
 
 conda_env_from_command_line "$package_name" $conda_env_name "$create_command"
 
+# Define a reusable function for downloading sample data.
+# This can then be wrapped in a prompt.
+pmp_install_sample_data () {
+    conda activate _CMEC_pcmdi_metrics
+    mkdir $CMEC_MODULE_DIR/demo_data
+    python ${CMEC_TMP_DIR}/$archive_name/doc/jupyter/Demo/download_sample_data.py $CMEC_MODULE_DIR/demo_data
+    echo
+    echo "Sample data downloaded to "$CMEC_MODULE_DIR/demo_data
+}
+
+# Download sample data
+if [ $USE_PROMPTS == "1" ]; then
+    while true; do
+        read -p "Download sample data? [Y/n] "  yn
+        case $yn in
+            [Nn]* ) echo "Skipping sample data download"
+                    break;;
+            * ) pmp_install_sample_data
+        esac
+    done
+else
+    # Default is to download sample data
+    pmp_install_sample_data
+fi
