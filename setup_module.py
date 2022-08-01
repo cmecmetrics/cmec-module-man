@@ -71,6 +71,12 @@ def check_user_settings():
         user_settings["git_clone_https"] = True
         edited = True
 
+    # Check if the sample data directory has been set
+    if "sample_data_dir" not in user_settings:
+        print("Setting sample data directory to ./sample_data")
+        user_settings["sample_data_dir"] = "./sample_data"
+        edited = True
+
     # Check conda environment keys, first using guess.
     for item, guess in zip(["conda_source_file", "conda_env_dir"], [conda_source_guess, conda_env_guess]):
         if (item not in user_settings) or (user_settings[item] == ""):
@@ -177,6 +183,10 @@ if __name__ == "__main__":
 
         cmec_user_settings = check_user_settings()
 
+        # Check that sample data directory exists
+        if not os.path.exists(cmec_user_settings["sample_data_dir"]):
+            os.mkdir(cmec_user_settings["sample_data_dir"])
+
         # Set environment variables for recipe to use
         run_env = os.environ.copy()
         run_env["CMEC_MODULES_HOME"] = os.path.abspath(args.module_dir)
@@ -186,6 +196,7 @@ if __name__ == "__main__":
         run_env["CONDA_ENV_DIR"] = cmec_user_settings["conda_env_dir"]
         run_env["CONDA_SOURCE"] = cmec_user_settings["conda_source_file"]
         run_env["CMEC_CLONE_HTTPS"] = str(int(cmec_user_settings["git_clone_https"] == True))
+        run_env["CMEC_DATA_DIR"] = os.path.join(cmec_user_settings["sample_data_dir"],module)
         
         # Run module recipe
         print("\nRunning recipe for ",module)
