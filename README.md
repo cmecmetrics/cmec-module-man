@@ -32,6 +32,7 @@ Create a new file called .module_manager_user_settings in the cmec-module-man co
     "git_clone_https": true,
     "conda_env_dir": "",
     "conda_source_file": ""
+    "sample_data_dir": ""
 }
 ```
 
@@ -44,7 +45,10 @@ Boolean true (default) or false. Set true to use https for cloning, or false to 
 String. In the quotes, enter the path to the directory used for storing your conda environments. For example, in miniconda 3 this might be: ~/miniconda3/envs. Your system might have a different environment location, so please consult any documentation about using conda on your platform. The setup script can expand the tilde in the path.
 
 **conda_source_file**  
-String. In the quotes, enter the path to the file that gets "sourced" to activate conda. For example, in miniconda 3 this might be: ~/miniconda3/etc/profile.d/conda.sh. Your system might have a different source script, so please consult any documentation about using conda on your platform. The setup script can expand the tilde in the path.
+String. In the quotes, enter the path to the file that gets "sourced" to activate conda. For example, in miniconda 3 this might be: ~/miniconda3/etc/profile.d/conda.sh. Your system might have a different source script, so please consult any documentation about using conda on your platform. The setup script can expand the tilde in the path.  
+
+**sample_data_dir**  
+String. This is a directory for sample data storage. Packages that include large datasets will download those datasets to a subfolder in this directory. Ideally this is a location with multiple gigabytes of space. Users will be prompted before large datasets are downloaded.  
 
 Usage
 ------
