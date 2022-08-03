@@ -26,15 +26,12 @@ Settings
 
 The setup script requires a few user settings. It will attempt to set these automatically on the first run, or you can create a settings file ahead of time.
 
-Create a new file called .module_manager_user_settings in the cmec-module-man code directory. This file uses JSON formatting. Paste the following code in that file, make edits, and save your choices:
+Copy .module_manager_user_settings-example to .module_manager_user_settings. 
 ```
-{
-    "git_clone_https": true,
-    "conda_env_dir": "",
-    "conda_source_file": ""
-    "sample_data_dir": ""
-}
+cp .module_manager_user_settings-example .module_manager_user_settings
 ```
+
+This file uses JSON formatting. Use a text editor to complete the settings and save your choices. The settings keys are described in the following section.  
 
 ### Settings file keys
 
