@@ -160,7 +160,7 @@ if __name__ == "__main__":
         print("Please check that module name is correct.")
         print("If module name is correct, try " +
               "updating repository with:")
-        print("%  git pull origin master")
+        print("%  git pull origin main")
         sys.exit()
     
     if run_recipe:
