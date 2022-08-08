@@ -184,8 +184,9 @@ if __name__ == "__main__":
         cmec_user_settings = check_user_settings()
 
         # Check that sample data directory exists
-        if not os.path.exists(cmec_user_settings["sample_data_dir"]):
-            os.mkdir(cmec_user_settings["sample_data_dir"])
+        sample_dir = os.path.abspath(cmec_user_settings["sample_data_dir"])
+        if not os.path.exists(sample_dir):
+            os.mkdir(sample_dir)
 
         # Set environment variables for recipe to use
         run_env = os.environ.copy()
@@ -196,7 +197,7 @@ if __name__ == "__main__":
         run_env["CONDA_ENV_DIR"] = cmec_user_settings["conda_env_dir"]
         run_env["CONDA_SOURCE"] = cmec_user_settings["conda_source_file"]
         run_env["CMEC_CLONE_HTTPS"] = str(int(cmec_user_settings["git_clone_https"] == True))
-        run_env["CMEC_DATA_DIR"] = os.path.join(cmec_user_settings["sample_data_dir"],module)
+        run_env["CMEC_DATA_DIR"] = os.path.join(sample_dir,module)
         
         # Run module recipe
         print("\nRunning recipe for ",module)
