@@ -12,7 +12,7 @@ pmp_version="$(get_latest_repository_tag "PCMDI/pcmdi_metrics" "v2.3.2")"
 pmp_version_number=$( echo ${pmp_version} | cut -d 'v' -f 2 ) # strip leading 'v'
 
 # Set variables for download, using version variables
-user_prompt="Download PCMDI Metrics Package (PMP) version "${pmp_version}"?"
+user_prompt="Download PCMDI Metrics Package (PMP)?"
 wget_path="https://github.com/PCMDI/pcmdi_metrics/archive/refs/tags/"${pmp_version}".tar.gz"
 archive_name="pcmdi_metrics-"${pmp_version_number}
 
