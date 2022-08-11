@@ -12,7 +12,11 @@ Most CMEC modules run Python scripts that require specific conda environments. T
 
 Environment
 -----------
-Requires cmec_driver and python>=3.5. Conda is recommended as many modules use conda environments to manage python dependencies.
+This software is intended for Unix-like and MacOS operating systems.
+
+The python package dependencies are cmec_driver (from conda-forge) and python>=3.5. 
+
+Conda is required as most modules use conda environments to manage python dependencies.  
 
 Here are example commands to create and activate a new conda environment called "cmec" for running the module manager:  
 ```
@@ -49,9 +53,9 @@ String. This is a directory for sample data storage. Packages that include large
 
 Usage
 ------
-Run this command from a cmec-driver enabled conda environment. Replace the final 'module' argument with the short name of the target module (see Table 1 below).
+Run the setup_module.py script following the example below. Replace the final 'module' argument with the short name of the target module (see Table 1 below).
 ```
-python setup_module.py module
+python setup_module.py <module>
 ```
 You will be prompted throughout the installation process (unless the --force option is invoked). It is recommended that you overwrite existing directories and install any required conda environments; however, flexibility is offered for cases where that is not ideal.
 
