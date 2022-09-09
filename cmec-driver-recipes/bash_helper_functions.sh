@@ -157,7 +157,7 @@ conda_env_from_command_line () {
         echo "$1 requires 1 conda environment."
         echo "If you do not have the "$2" conda environment, it can be created now."
         while true; do
-	        read -p "Install PMP conda environment? [Y/n] " yn
+	        read -p "Install "$2" conda environment? [Y/n] " yn
 	        case $yn in
 		        [Nn]* ) echo "Skipping conda environments for $1."
 				        break;;
