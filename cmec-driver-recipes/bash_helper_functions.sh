@@ -135,7 +135,7 @@ conda_env_from_yaml () {
         fi
 
         # Run create; if it fails, skip this environment
-        conda env create -y -p $CONDA_ENV_DIR/$tmp_conda_env_name -f $CMEC_MODULE_DIR/$i || 
+        conda env create -p $CONDA_ENV_DIR/$tmp_conda_env_name -f $CMEC_MODULE_DIR/$i || 
         echo "Skipping conda environment $i."
     done
 }
@@ -218,7 +218,7 @@ module_download () {
     #--------------------------------------------
     if [ $USE_PROMPTS == "1" ]; then
         while true; do
-	        read -p "$1" "[Y/n] " yn
+	        read -p "$1""[Y/n] " yn
 	        case $yn in
 		        [Nn]* ) echo "Exiting without installation"
                         echo "CMEC driver cannot register module without download."
