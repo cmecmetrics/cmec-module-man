@@ -20,7 +20,7 @@ source $CONDA_SOURCE
 conda activate _CMEC_test_env
 echo "Creating test dataset."
 cd $CMEC_MODULE_DIR
-mkdir test_data/
-python make_test_data.py test_data
-echo "Test dataset created in "$CMEC_MODULE_DIR"test_data/."
+mkdir -p ${CMEC_DATA_DIR}
+python make_test_data.py ${CMEC_DATA_DIR}
+echo "Test dataset created in "$CMEC_DATA_DIR"/test_data/."
 conda deactivate
