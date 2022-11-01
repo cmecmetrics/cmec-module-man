@@ -16,6 +16,7 @@ Arguments:
 import argparse
 import json
 import os
+from pathlib import Path
 import shutil
 import sys
 import subprocess
@@ -37,6 +38,29 @@ def user_prompt(question, default = "yes"):
         if choice in valid:
             return valid[choice]
         sys.stdout.write("Please respond 'y' or 'n' ")
+
+def check_cmec_settings(conda_source,conda_env_root):
+    cmec_library = os.path.join(Path.home(),".cmeclibrary")
+    
+    with open(cmec_library,"r") as lib:
+        cmec_settings = json.load(lib)
+
+    edited = False
+    if "conda_source" not in cmec_settings or \
+    cmec_settings["conda_source"] == "":
+        cmec_settings["conda_source"] = os.path.abspath(conda_source)
+        print("Updating conda source file in " + str(cmec_library))
+        edited = True
+    
+    if "conda_env_root" not in cmec_settings or \
+    cmec_settings["conda_env_root"] == "":
+        cmec_settings["conda_env_root"] = os.path.abspath(conda_env_root)
+        print("Updating conda env directory in " + str(cmec_library))
+        edited = True
+
+    if edited:
+        with open(cmec_library,"w") as lib:
+            json.dump(cmec_settings, lib, indent=4)
 
 def check_user_settings():
     # Check for saved conda environment and git information
@@ -111,6 +135,9 @@ def check_user_settings():
             print("Writing settings to " + user_settings_file)
             with open(user_settings_file, "w") as open_user_settings:
                 json.dump(user_settings, open_user_settings, indent=4)
+
+    check_cmec_settings(user_settings["conda_source_file"],user_settings["conda_env_dir"])
+
 
     return user_settings
 
@@ -246,6 +273,8 @@ if __name__ == "__main__":
 
         # Remove temporary directory
         if os.path.exists(tmp_dir):
+            if os.path.exists(os.path.join(tmp_dir,".DS_Store")):
+                os.remove(os.path.join(tmp_dir,".DS_Store"))
             shutil.rmtree(tmp_dir)
     else:
         print("\nSkipping run recipe for module",module)
