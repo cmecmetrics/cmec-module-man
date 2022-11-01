@@ -98,7 +98,7 @@ conda_env_from_yaml () {
 				        echo "Conda environment can be created manually using:"
                         for i in "${@:2}"
                         do
-				            echo "% conda env create -y -p $CONDA_ENV_DIR -f $CMEC_MODULE_DIR/$i"
+				            echo "% conda env create -p $CONDA_ENV_DIR -f $CMEC_MODULE_DIR/$i"
                         done
 				        exit;;
 		        * ) break;; #continue to next section for install
@@ -135,7 +135,7 @@ conda_env_from_yaml () {
         fi
 
         # Run create; if it fails, skip this environment
-        conda env create -y -p $CONDA_ENV_DIR/$tmp_conda_env_name -f $CMEC_MODULE_DIR/$i || 
+        conda env create -p $CONDA_ENV_DIR/$tmp_conda_env_name -f $CMEC_MODULE_DIR/$i || 
         echo "Skipping conda environment $i."
     done
 }
@@ -157,7 +157,7 @@ conda_env_from_command_line () {
         echo "$1 requires 1 conda environment."
         echo "If you do not have the "$2" conda environment, it can be created now."
         while true; do
-	        read -p "Install PMP conda environment? [Y/n] " yn
+	        read -p "Install "$1" conda environment? [Y/n] " yn
 	        case $yn in
 		        [Nn]* ) echo "Skipping conda environments for $1."
 				        break;;

@@ -2,7 +2,7 @@
 
 source cmec-driver-recipes/bash_helper_functions.sh
 
-mdtf_version=3.0-beta.3
+mdtf_version=3.0.beta.5
 
 # Set variables for download, using version variables
 user_prompt="Download MDTF Diagnostics version "${mdtf_version}"? "
