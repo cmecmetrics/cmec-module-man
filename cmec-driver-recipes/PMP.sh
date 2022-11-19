@@ -8,7 +8,7 @@ source cmec-driver-recipes/bash_helper_functions.sh
 
 # Get latest version number, which can be substituted into a template
 # for the release tarball in the next steps.
-pmp_version="$(get_latest_repository_tag "PCMDI/pcmdi_metrics" "v2.3.2")"
+pmp_version="$(get_latest_repository_tag "PCMDI/pcmdi_metrics" "v2.5.1")"
 pmp_version_number=$( echo ${pmp_version} | cut -d 'v' -f 2 ) # strip leading 'v'
 
 # Set variables for download, using version variables
