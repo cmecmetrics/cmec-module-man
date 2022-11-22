@@ -42,7 +42,7 @@ def user_prompt(question, default = "yes"):
 def check_cmec_settings(conda_source,conda_env_root):
     cmec_library = os.path.join(Path.home(),".cmeclibrary")
     
-    if cmec_library.exists():
+    if os.path.exists(cmec_library):
         with open(cmec_library,"r") as lib:
             cmec_settings = json.load(lib)
     else:
