@@ -42,8 +42,11 @@ def user_prompt(question, default = "yes"):
 def check_cmec_settings(conda_source,conda_env_root):
     cmec_library = os.path.join(Path.home(),".cmeclibrary")
     
-    with open(cmec_library,"r") as lib:
-        cmec_settings = json.load(lib)
+    if cmec_library.exists():
+        with open(cmec_library,"r") as lib:
+            cmec_settings = json.load(lib)
+    else:
+        cmec_settings = {}
 
     edited = False
     if "conda_source" not in cmec_settings or \
