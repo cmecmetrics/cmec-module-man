@@ -218,7 +218,7 @@ module_download () {
     #--------------------------------------------
     if [ $USE_PROMPTS == "1" ]; then
         while true; do
-	        read -p "$1" "[Y/n] " yn
+	        read -p "$1"" [Y/n] " yn
 	        case $yn in
 		        [Nn]* ) echo "Exiting without installation"
                         echo "CMEC driver cannot register module without download."
