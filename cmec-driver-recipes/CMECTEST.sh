@@ -16,8 +16,8 @@ yaml_file="test_env.yaml"
 conda_env_from_yaml "$package_name" $yaml_file
 
 # Create sample data. Need packages in module environment.
-source $CONDA_SOURCE
-conda activate _CMEC_test_env
+source ${CONDA_SOURCE}
+conda activate ${CONDA_ENV_DIR}/_CMEC_test_env
 echo "Creating test dataset."
 cd $CMEC_MODULE_DIR
 mkdir -p ${CMEC_DATA_DIR}

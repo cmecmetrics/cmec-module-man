@@ -42,7 +42,7 @@ conda_env_from_command_line "$package_name" $conda_env_name "$create_command"
 # This can then be wrapped in a prompt.
 pmp_install_sample_data () {
     source ${CONDA_SOURCE}
-    conda activate _CMEC_pcmdi_metrics
+    conda activate ${CONDA_ENV_DIR}/_CMEC_pcmdi_metrics
     mkdir -p ${CMEC_DATA_DIR}
     #python ${CMEC_TMP_DIR}/$archive_name/doc/jupyter/Demo/download_sample_data.py ${CMEC_DATA_DIR}
     python ${CMEC_MODULE_DIR}/download_sample_data.py ${CMEC_DATA_DIR}
