@@ -46,7 +46,7 @@ def check_cmec_settings(conda_source,conda_env_root):
         with open(cmec_library,"r") as lib:
             cmec_settings = json.load(lib)
     else:
-        cmec_settings = {}
+        cmec_settings = {"modules": {}, "cmec-driver": {}, "version": "1"}
 
     edited = False
     if "conda_source" not in cmec_settings or \
