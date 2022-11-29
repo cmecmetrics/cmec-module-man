@@ -32,7 +32,7 @@ cp -r ${CMEC_TMP_DIR}/$archive_name/cmec $CMEC_MODULE_DIR
 cp ${CMEC_TMP_DIR}/${archive_name}/doc/jupyter/Demo/download_sample_data.py ${CMEC_MODULE_DIR}/download_sample_data.py
 
 # Create PMP conda environment
-package_name="PCMDI Metrics Package"
+package_name="PMP"
 conda_env_name="_CMEC_pcmdi_metrics"
 create_command="conda create  -p ${CONDA_ENV_DIR}/_CMEC_pcmdi_metrics -c conda-forge pcmdi_metrics"
 
