@@ -79,7 +79,7 @@ Run complete (default) installation without prompts
 | ILAMB | International Land Model Benchmarking | https://github.com/rubisco-sfa/ILAMB |
 | MDTF_Diagnostics | Model Diagnostics Task Force | https://github.com/NOAA-GFDL/MDTF-diagnostics |
 | PMP | PCMDI Metrics Package |  https://github.com/PCMDI/pcmdi_metrics |
-
+| XWMT | xWMT (Water Mass Transformation) | https://github.com/cmecmetrics/cmec_xwmt |
 
  
 
