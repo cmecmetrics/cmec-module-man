@@ -13,17 +13,21 @@ git_clone "github.com" "cmecmetrics/cmec_xwmt" $module_name
 conda_env_from_yaml $module_name "xwmt_env.yaml"
 
 # Define a reusable function for downloading sample data.
-# This can then be wrapped in a prompt.
+# Information about XWMT sample data can be found in
+# XWMT README at https://github.com/cmecmetrics/cmec_xwmt#readme
 xwmt_install_sample_data () {
     source ${CONDA_SOURCE}
     conda activate ${CONDA_ENV_DIR}/_CMEC_xwmt_env
+    
     mkdir -p ${CMEC_DATA_DIR}
     mkdir -p ${CMEC_DATA_DIR}/model_directory
     mkdir -p ${CMEC_DATA_DIR}/obs_directory
-    #python ${CMEC_TMP_DIR}/$archive_name/doc/jupyter/Demo/download_sample_data.py ${CMEC_DATA_DIR}
+
     python ${CMEC_MODULE_DIR}/make_example_data.py ${CMEC_DATA_DIR}/model_directory ${CMEC_DATA_DIR}/obs_directory
+    
     tar -xvf ${CMEC_DATA_DIR}/model_directory/xwmt_input_example.tar.gz -C  ${CMEC_DATA_DIR}/model_directory/
     tar -xvf ${CMEC_DATA_DIR}/obs_directory/xwmt/xwmt_obs_est_cmec.tar.gz -C  ${CMEC_DATA_DIR}/obs_directory/xwmt/
+    
     rm ${CMEC_DATA_DIR}/model_directory/xwmt_input_example.tar.gz
     rm ${CMEC_DATA_DIR}/obs_directory/xwmt/xwmt_obs_est_cmec.tar.gz
     echo
