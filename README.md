@@ -12,7 +12,7 @@ Most CMEC modules run Python scripts that require specific conda environments. T
 
 Environment
 -----------
-This software is intended for Unix-like and MacOS operating systems.
+This software is intended for Unix-like and MacOS operating systems. It has not been tested on the Apple Silicon.  
 
 The python package dependencies are cmec_driver (from conda-forge) and python>=3.5. 
 
